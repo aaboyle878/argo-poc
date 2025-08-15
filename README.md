@@ -1,1 +1,1 @@
-# argo-poc
+# GitOps for govtool (dev only for now)
