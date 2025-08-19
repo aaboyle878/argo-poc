@@ -13,7 +13,7 @@ resources:
   limits:
     memory: "1024Mi"
     cpu: "1000m"
-secrets:
+secret:
   mode: k8s         #cna be set to k8s | vault-agent | csi
   name: oc-env-vars
   create: false
