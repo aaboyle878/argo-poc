@@ -1,7 +1,7 @@
 replicaCount: 1
 image:
-  repository: ghcr.io/intersectmbo/govtool-metadata-validation-dev
-  tag: 6f0b1dc530615cd284d76c052616cfd32d4986dd-114
+  repository: ghcr.io/aaboyle878/govtool-govtool-metadata-validation
+  tag: develop-a38ed7fc73a15cbd4fb01b540b7833875233dd19
 
 env:
   name: PORT
