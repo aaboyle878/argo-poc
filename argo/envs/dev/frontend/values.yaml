@@ -22,7 +22,7 @@ strategy:
 
 secret:
   name: fe-env-vars
-  create: true
+  create: false
 
 env:
   VITE_APP_ENV: "prod"

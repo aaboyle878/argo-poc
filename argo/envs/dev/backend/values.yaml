@@ -24,7 +24,7 @@ service:
 
 secret:
   name: db-config
-  create: true
+  create: false
   configJson: |
     {
       "dbsyncconfig" : {
