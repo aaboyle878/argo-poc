@@ -42,10 +42,6 @@ env:
   transferTokenSalt: ""
   postgresqlReplicationUsePassfile: "false"
 
-pdfservice:
-  port: 80
-  targetPort: 1337
-
 fullnameOverride: "gt-pdf"
 
 image:
@@ -69,3 +65,17 @@ replicas: 1
 
 pdfdb:
   fullnameOverride: "gt-pdf-db"
+
+pdfservice:
+  name: "gt-pdf-service"
+  port: 80
+  targetPort: 1337
+
+ingress:
+  enabled: true
+  className: nginx
+  host: pdf.localhost
+  tls:
+    enabled: true
+    secretName: pdf-tls
+  clusterIssuer: cluster-issuer
