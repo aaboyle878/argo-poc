@@ -6,9 +6,9 @@ dbsecret:
   name: pdf-db-connect
   create: true
   data:
-    POSTGRES_DB: 
-    POSTGRES_USER: 
-    POSTGRES_PASSWORD: 
+    POSTGRES_DB: postgres
+    POSTGRES_USER: postgres
+    POSTGRES_PASSWORD: pdf-postgres 
 
 dbreplicas: 1
 
@@ -18,14 +18,15 @@ dbvolume:
   name: db-data
   mountPath: /var/lib/postgresql/data
 pdfsecret:
+  mode: k8s
   name: pdf-env-vars
   create: true
 
 env:
-  ADMIN_JWT_SECRET: 
-  API_TOKEN_SALT:
-  APP_KEYS: 
-  DATABASE_CLIENT: postgres
+  ADMIN_JWT_SECRET: ""
+  API_TOKEN_SALT: ""
+  APP_KEYS: ""
+  DATABASE_CLIENT: 
   DATABASE_SSL: "false"
   DATABASE_HOST: gt-pdf-db-service
   DATABASE_PORT: 5432
@@ -33,12 +34,12 @@ env:
   DATABASE_NAME: 
   DATABASE_USERNAME: 
   govtoolApiBaseUrl: "https://be.localhost"
-  JWT_SECRET: 
+  JWT_SECRET: ""
   jwtSecretExpires: "1d"
   NODE_ENV: production
-  refreshSecret: 
+  refreshSecret: ""
   refreshTokenExpires: "1d"
-  transferTokenSalt: 
+  transferTokenSalt: ""
   postgresqlReplicationUsePassfile: "false"
 
 pdfservice:
