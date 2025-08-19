@@ -23,6 +23,11 @@ spec:
             chartPath: charts/outcomes
             valuesPath: argo/envs/dev/outcomes/values.yaml
             imageRepo: ghcr.io/intersectmbo/govtool-outcomes-pillar-backend
+          - name: pdf
+            chartPath: charts/pdf
+            valuesPath: argo/envs/dev/pdf/values.yaml
+            imageRepo: ghcr.io/intersectmbo/govtool-proposal-pillar-backend
+
   template:
     metadata:
       name: '{{name}}-dev'
