@@ -12,10 +12,6 @@ resources:
     memory: "1024Mi"
     cpu: "1000m"
 
-service:
-  port: 80
-  targetPort: 80
-
 strategy:
   maxSurge: "25%"
   maxUnavailable: "0"
@@ -40,3 +36,16 @@ env:
   VITE_OUTCOMES_API_URL: "oc.localhost"
 
 fullnameOverride: "gt-frontend"
+
+service:
+  port: 80
+  targetPort: 80
+
+ingress:
+  enabled: true
+  className: nginx
+  host: localhost
+  tls:
+    enabled: true
+    secretName: fe-tls
+  clusterIssuer: cluster-issuer
