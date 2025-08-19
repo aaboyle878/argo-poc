@@ -9,7 +9,7 @@ spec:
         elements:
           - name: backend
             chartPath: charts/backend
-            valuesPath: envs/dev/backend/values.yaml
+            valuesPath: argo/envs/dev/backend/values.yaml
             imageRepo: ghcr.io/intersectmbo/govtool-backend-prod
   template:
     metadata:

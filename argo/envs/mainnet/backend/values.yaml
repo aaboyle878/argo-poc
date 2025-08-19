@@ -1,8 +1,8 @@
 replicaCount: 1
 
 image:
-  repository: ghcr.io/intersectmbo/govtool-backend-dev
-  tag: 6f0b1dc530615cd284d76c052616cfd32d4986dd-114
+  repository: ghcr.io/intersectmbo/govtool-backend-prod
+  tag: 8423e2c39d14d52acf9e35a9427ece0b1d62b755-118
   pullPolicy: IfNotPresent
 
 resources:

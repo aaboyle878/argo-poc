@@ -28,7 +28,7 @@ secret:
   configJson: |
     {
       "dbsyncconfig" : {
-        "host"    : "dbsync-v3.demeter.run",
+        "host"    : "",
         "dbname"  : "",
         "user"    : "",
         "password" : "",
