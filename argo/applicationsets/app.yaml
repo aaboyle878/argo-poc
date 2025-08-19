@@ -15,6 +15,10 @@ spec:
             chartPath: charts/frontend
             valuesPath: argo/envs/dev/frontend/values.yaml
             imageRepo: ghcr.io/intersectmbo/govtool-frontend-dev
+          - name: metadata
+            chartPath: charts/metadata
+            valuesPath: argo/envs/dev/metadata/values.yaml
+            imageRepo: ghcr.io/intersectmbo/govtool-metadata-validation-dev
   template:
     metadata:
       name: '{{name}}-dev'
