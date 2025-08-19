@@ -17,11 +17,6 @@ strategy:
   maxSurge: "25%"
   maxUnavailable: "0"
 
-service:
-  type: ClusterIP
-  port: 80
-  targetPort: 9876
-
 secret:
   name: db-config
   create: false
@@ -42,3 +37,17 @@ secret:
     }
 
 fullnameOverride: "gt-backend"
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 9876
+
+ingress:
+  enabled: true
+  className: nginx
+  host: be.localhost
+  tls:
+    enabled: true
+    secretName: be-tls
+  clusterIssuer: cluster-issuer
