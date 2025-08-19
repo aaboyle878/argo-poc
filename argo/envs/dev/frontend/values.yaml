@@ -38,6 +38,7 @@ env:
 fullnameOverride: "gt-frontend"
 
 service:
+  name: "gt-frontend-service"
   port: 80
   targetPort: 80
 
