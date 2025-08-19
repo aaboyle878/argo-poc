@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: govtool
+  namespace: argocd
+spec:
+  sourceRepos:
+    - https://github.com/aaboyle878/govtool-helm.git
+    - https://github.com/aaboyle878/argo-poc.git
+  destinations:
+    - server: https://kubernetes.default.svc
+      namespace: govtool
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'

@@ -1,0 +1,44 @@
+replicaCount: 1
+
+image:
+  repository: ghcr.io/intersectmbo/govtool-backend-dev
+  tag: 6f0b1dc530615cd284d76c052616cfd32d4986dd-114
+  pullPolicy: IfNotPresent
+
+resources:
+  requests:
+    memory: "512Mi"
+    cpu: "500m"
+  limits:
+    memory: "1024Mi"
+    cpu: "1000m"
+
+strategy:
+  maxSurge: "25%"
+  maxUnavailable: "0"
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 9876
+
+secret:
+  name: db-config
+  create: true
+  configJson: |
+    {
+      "dbsyncconfig" : {
+        "host"    : "dbsync-v3.demeter.run",
+        "dbname"  : "",
+        "user"    : "",
+        "password" : "",
+        "port"    : 5432
+      },
+      "port" : 9876,
+      "host" : "0.0.0.0",
+      "cachedurationseconds": 20,
+      "sentrydsn": "",
+      "sentryenv": ""
+    }
+
+fullnameOverride: "gt-backend"

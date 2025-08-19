@@ -1,0 +1,45 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: backend
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - name: backend
+            chartPath: charts/backend
+            valuesPath: envs/dev/backend/values.yaml
+            imageRepo: ghcr.io/intersectmbo/govtool-backend-prod
+  template:
+    metadata:
+      name: '{{name}}-dev'
+      annotations:
+        argocd-image-updater.argoproj.io/image-list: '{{name}}={{imageRepo}}:~1'
+        argocd-image-updater.argoproj.io/{{name}}.helm.image-name: image.repository
+        argocd-image-updater.argoproj.io/{{name}}.helm.image-tag: image.tag
+        argocd-image-updater.argoproj.io/write-back-method: git
+        argocd-image-updater.argoproj.io/git-branch: main
+        argocd-image-updater.argoproj.io/git-username: "aaboyle878"
+        argocd-image-updater.argoproj.io/git-credentials: "secret:argocd/aiu-git-creds#password"
+        argocd-image-updater.argoproj.io/git-user: "Argo Image Updater"
+        argocd-image-updater.argoproj.io/git-email: "aiu@local"
+    spec:
+      project: govtool
+      sources:
+        - repoURL: https://github.com/aaboyle878/govtool-helm.git
+          targetRevision: main
+          path: '{{chartPath}}'
+          helm:
+            valueFiles:
+              - $values/{{valuesPath}}
+        - repoURL: https://github.com/aaboyle878/argo-poc.git
+          targetRevision: main
+          ref: values
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: govtool
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
