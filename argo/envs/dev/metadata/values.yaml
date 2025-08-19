@@ -16,11 +16,21 @@ resources:
   limits:
     memory: "1024Mi"
     cpu: "1000m"
-service:
-  port: 80
-  targetPort: 3000
+
 strategy:
   maxSurge: "25%"
   maxUnavailable: "0"
 
 fullnameOverride: "gt-metadata"
+service:
+  name: "gt-metadata-service"
+  port: 80
+  targetPort: 3000
+ingress:
+  enabled: true
+  className: nginx
+  host: md.localhost
+  tls:
+    enabled: true
+    secretName: md-tls
+  clusterIssuer: cluster-issuer
