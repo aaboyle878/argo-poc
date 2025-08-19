@@ -3,9 +3,6 @@ image:
   repository: ghcr.io/intersectmbo/govtool-outcomes-pillar-backend
   tag: 4f1bb0752bb1c390fdc0f1e4bff07897879ad9f6-88
 
-service:
-  port: 80
-  targetPort: 3000
 resources:
   requests:
     memory: "512Mi"
@@ -37,3 +34,16 @@ strategy:
     maxUnavailable: 0
 
 fullnameOverride: "gt-outcomes"
+
+service:
+  name: "gt-outcomes-service"
+  port: 80
+  targetPort: 3000
+ingress:
+  enabled: true
+  className: nginx
+  host: oc.localhost
+  tls:
+    enabled: true
+    secretName: oc-tls
+  clusterIssuer: cluster-issuer
