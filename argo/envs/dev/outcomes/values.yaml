@@ -13,22 +13,24 @@ resources:
   limits:
     memory: "1024Mi"
     cpu: "1000m"
-secret:
+secrets:
+  mode: k8s         #cna be set to k8s | vault-agent | csi
   name: oc-env-vars
-  create: true
-
+  create: false
+  data: 
+    DATABASE_HOST: ""
+    DATABASE_PORT: ""
+    DATABASE_NAME: ""
+    DATABASE_USER: ""
+    DATABASE_PASSWORD: ""
+    IPFS_GATEWAY: ""
+    PDF_API_URL: ""
+  
 env:
-  DATABASE_HOST: 
-  DATABASE_PORT: 
-  DATABASE_NAME: 
-  DATABASE_USER: 
-  DATABASE_PASSWORD: 
-  IPFS_GATEWAY: dweb.link/ipfs
-  PDF_API_URL: https://pdf.localhost/
-  value: 3000
-  hostvalue: 0.0.0.0
   name: PORT
+  value: 3000
   hostname: HOST
+  hostvalue: 0.0.0.0
 strategy:
   rollingUpdate:
     maxSurge: 25%
