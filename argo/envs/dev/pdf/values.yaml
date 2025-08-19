@@ -20,7 +20,7 @@ dbvolume:
 pdfsecret:
   mode: k8s
   name: pdf-env-vars
-  create: true
+  create: false
 
 env:
   ADMIN_JWT_SECRET: ""
