@@ -1,0 +1,37 @@
+replicaCount: 1
+image:
+  repository: ghcr.io/intersectmbo/govtool-outcomes-pillar-backend
+  tag: 4f1bb0752bb1c390fdc0f1e4bff07897879ad9f6-88
+
+service:
+  port: 80
+  targetPort: 3000
+resources:
+  requests:
+    memory: "512Mi"
+    cpu: "500m"
+  limits:
+    memory: "1024Mi"
+    cpu: "1000m"
+secret:
+  name: oc-env-vars
+  create: true
+
+env:
+  DATABASE_HOST: 
+  DATABASE_PORT: 
+  DATABASE_NAME: 
+  DATABASE_USER: 
+  DATABASE_PASSWORD: 
+  IPFS_GATEWAY: dweb.link/ipfs
+  PDF_API_URL: https://pdf.localhost/
+  value: 3000
+  hostvalue: 0.0.0.0
+  name: PORT
+  hostname: HOST
+strategy:
+  rollingUpdate:
+    maxSurge: 25%
+    maxUnavailable: 0
+
+fullnameOverride: "gt-outcomes"
