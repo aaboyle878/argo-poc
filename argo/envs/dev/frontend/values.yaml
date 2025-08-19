@@ -1,0 +1,42 @@
+replicaCount: 1
+
+image:
+  repository: ghcr.io/intersectmbo/govtool-frontend-dev
+  tag: 6f0b1dc530615cd284d76c052616cfd32d4986dd-114
+
+resources:
+  requests:
+    memory: "512Mi"
+    cpu: "500m"
+  limits:
+    memory: "1024Mi"
+    cpu: "1000m"
+
+service:
+  port: 80
+  targetPort: 80
+
+strategy:
+  maxSurge: "25%"
+  maxUnavailable: "0"
+
+secret:
+  name: fe-env-vars
+  create: true
+
+env:
+  VITE_APP_ENV: "prod"
+  VITE_BASE_URL: "be.localhost"
+  VITE_METADATA_API_URL: "md.localhost"
+  VITE_NETWORK_FLAG: "0"
+  VITE_SENTRY_DSN: ""
+  VITE_IS_DEV: "false"
+  VITE_USERSNAP_SPACE_API_KEY: ""
+  VITE_IS_PROPOSAL_DISCUSSION_FORUM_ENABLED: "true"
+  VITE_IS_GOVERNANCE_OUTCOMES_PILLAR_ENABLED: "true"
+  VITE_PDF_API_URL: "pdf.localhost"
+  VITE_IPFS_GATEWAY: "dweb.link/ipfs/"
+  VITE_IPFS_PROJECT_ID: ""
+  VITE_OUTCOMES_API_URL: "oc.localhost"
+
+fullnameOverride: "gt-frontend"
