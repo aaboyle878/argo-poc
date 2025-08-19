@@ -39,6 +39,7 @@ secret:
 fullnameOverride: "gt-backend"
 
 service:
+  name: "gt-backend-service"
   type: ClusterIP
   port: 80
   targetPort: 9876
