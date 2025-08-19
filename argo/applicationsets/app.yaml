@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: backend
+  name: govtool-dev
   namespace: argocd
 spec:
   generators:
@@ -10,7 +10,11 @@ spec:
           - name: backend
             chartPath: charts/backend
             valuesPath: argo/envs/dev/backend/values.yaml
-            imageRepo: ghcr.io/intersectmbo/govtool-backend-prod
+            imageRepo: ghcr.io/intersectmbo/govtool-backend-dev
+          - name: frontend
+            chartPath: charts/frontend
+            valuesPath: argo/envs/dev/frontend/values.yaml
+            imageRepo: ghcr.io/intersectmbo/govtool-frontend-dev
   template:
     metadata:
       name: '{{name}}-dev'
