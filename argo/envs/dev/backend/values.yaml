@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: ghcr.io/aaboyle878/govtool-govtool-backend
-  tag: develop-a38ed7fc73a15cbd4fb01b540b7833875233dd19
+  tag: develop-e2da46fc788e179d588ba6905a590ae91766ada6
   pullPolicy: IfNotPresent
 
 resources:
